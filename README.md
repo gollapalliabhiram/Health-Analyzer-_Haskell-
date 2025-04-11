@@ -17,5 +17,29 @@ A lightweight web application built using **Haskell (Scotty)** and **Tailwind CS
 
 ---
 
-## 📁 Project Structure
+
+---
+
+## 🚀 Getting Started
+
+### 🔧 Prerequisites
+
+- [Haskell & GHC](https://www.haskell.org/platform/)
+- [Cabal](https://www.haskell.org/cabal/)
+- A browser
+
+---
+
+### 🛠 Installation & Run
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/health-dashboard.git
+cd health-dashboard
+
+# Build the project
+cabal build
+
+# Run the server
+cabal run health-dashboard
 
