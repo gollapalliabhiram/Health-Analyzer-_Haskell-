@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .fade-in { animation: fadeIn 1s ease-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Circular Progress Styles */
+    #uploadProgressContainer {
+      position: relative;
+      width: 50px;
+      height: 50px;
+    }
+    #uploadProgressCircle {
+      transform: rotate(-90deg);
+      transform-origin: center;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      transition: stroke-dashoffset 0.3s;
+    }
+    #uploadProgressText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #2563eb;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+  <div class="max-w-6xl mx-auto">
+    <header class="mb-10 text-center fade-in">
+      <h1 class="text-4xl md:text-5xl font-bold text-blue-900">🩺 Health Monitoring Dashboard</h1>
+      <p class="text-gray-600 mt-2 text-lg">Real-time Vitals Overview with Trend Analysis</p>
+    </header>
+
+    <!-- Upload form -->
+    <div class="bg-white shadow-xl rounded-lg p-6 flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 fade-in">
+      <input type="file" name="file" id="file" required class="border border-gray-300 rounded px-4 py-2 w-full sm:w-auto focus:ring-2 focus:ring-blue-400 transition"/>
+      <button id="uploadBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded transition shadow-md hover:shadow-lg">
+        Upload Report
+      </button>
+      <div id="uploadProgressContainer" class="hidden">
+        <svg viewBox="0 0 36 36" class="w-8 h-8">
+          <path
+            id="uploadProgressCircle"
+            d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32"
+            fill="none"
+            stroke="#3b82f6"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span id="uploadProgressText">0%</span>
+      </div>
+    </div>
+
+    <!-- Result Cards -->
+    <div id="result" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10 text-gray-800 text-center fade-in">
+      <!-- Filled dynamically -->
+    </div>
+
+    <!-- Health Score -->
+    <div id="healthScoreCard" class="hidden fade-in text-center mb-6">
+      <div class="inline-block bg-green-100 text-green-800 text-xl font-bold px-6 py-3 rounded-lg shadow">
+        Health Score: <span id="healthScoreValue">--</span>/100
+      </div>
+    </div>
+    
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in">
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">💓 Heart Rate (BPM)</h2>
+        <canvas id="heartRateChart" width="400" height="300" class="!h-64 w-full"></canvas>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">🩸 Blood Sugar (mg/dL)</h2>
+        <canvas id="bloodSugarChart" width="400" height="300" class="!h-64 w-full"></canvas>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">🩺 Blood Pressure (mmHg)</h2>
+        <canvas id="bloodPressureChart" width="400" height="300" class="!h-64 w-full"></canvas>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">⚖️ Weight (kg)</h2>
+        <canvas id="weightChart" width="400" height="300" class="!h-64 w-full"></canvas>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow col-span-1 md:col-span-2">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">📊 Health Radar Overview</h2>
+        <canvas id="healthRadarChart" width="600" height="400" class="!h-[400px] w-full"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

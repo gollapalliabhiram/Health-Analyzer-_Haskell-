@@ -1,0 +1,12 @@
+dependencies:
+- base >= 4.7 && < 5
+- scotty
+- wai
+- wai-extra
+- text
+- aeson
+- bytestring
+- directory
+- cassava
+- wai-middleware-static
+- vector

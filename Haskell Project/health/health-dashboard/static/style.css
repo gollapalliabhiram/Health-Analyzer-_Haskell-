@@ -1,0 +1,106 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+  padding: 30px;
+  margin: 0;
+  color: #1f2937;
+}
+
+/* Upload area */
+.upload-section {
+  background: white;
+  border: 2px dashed #93c5fd;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.upload-section:hover {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.upload-section input {
+  display: block;
+  margin: 1rem auto;
+}
+
+button {
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+/* Result Cards */
+#result {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.result-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+}
+
+.result-card span {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Chart containers */
+.chart-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease-out both;
+}
+
+.chart-container h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #1e40af;
+  font-weight: 700;
+}
+
+canvas {
+  max-height: 280px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
